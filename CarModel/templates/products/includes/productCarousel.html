@@ -1,0 +1,92 @@
+<div class="container">
+  <div class="row g-3 align-items-start">
+
+    <!-- LEFT: THUMBNAILS -->
+    <div class="col-3 col-md-2">
+      <div class="product-thumbs flex-md-column d-flex">
+
+        {% for img in product.images.all %}
+        <div class="thumb-wrapper">
+
+          <!-- IMAGE -->
+          <img src="{{ img.image.url }}"
+               class="product-thumb {% if forloop.first %}active-thumb{% endif %}"
+               onclick="changeImage('{{ img.image.url }}', this)">
+
+          <!-- ACTION BUTTONS -->
+           
+          <div class="thumb-actions">
+
+            <a href="{% url 'edit_product_image' img.pk %}"
+               class="btn btn-light btn-sm shadow-sm">
+              <i class="bi bi-pencil"></i>
+            </a>
+
+            <a href="{% url 'del_product_image' img.pk %}"
+               class="btn btn-danger btn-sm shadow-sm"
+               >
+              <i class="bi bi-trash"></i>
+            </a>
+
+          </div>
+          
+
+        </div>
+        {% endfor %}
+
+      </div>
+    </div>
+
+    <!-- RIGHT: MAIN IMAGE -->
+    <div class="col-9 col-md-10">
+      <div class="product-main">
+        <img id="mainImage"
+             src="{{ product.images.first.image.url }}"
+             class="product-main__img img-fluid "
+             data-bs-toggle="modal"
+             data-bs-target="#imageModal">
+      </div>
+    </div>
+
+  </div>
+</div>
+
+
+<!-- FULLSCREEN MODAL -->
+<div class="modal fade" id="imageModal" tabindex="-1">
+  <div class="modal-dialog modal-fullscreen">
+    <div class="modal-content bg-dark">
+
+      <div class="modal-header border-0">
+        <button type="button" class="btn-close btn-close-white"
+                data-bs-dismiss="modal"></button>
+      </div>
+
+      <div class="modal-body d-flex justify-content-center align-items-center">
+        <img id="modalImage" class="product-modal__img">
+      </div>
+
+    </div>
+  </div>
+</div>
+
+{% block extra_js %}
+<script>
+function changeImage(src, el) {
+    const mainImage = document.getElementById('mainImage');
+    const modalImage = document.getElementById('modalImage');
+    const thumbs = document.querySelectorAll('.product-thumb');
+
+    mainImage.src = src;
+    modalImage.src = src;
+
+    thumbs.forEach(t => t.classList.remove('active-thumb'));
+    el.classList.add('active-thumb');
+}
+
+// Sync modal image
+document.getElementById('mainImage').addEventListener('click', function () {
+    document.getElementById('modalImage').src = this.src;
+});
+</script>
+{% endblock %}

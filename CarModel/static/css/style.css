@@ -1,0 +1,367 @@
+
+body {
+  background: linear-gradient(90deg,#181413, #0a0f2c, #221c1a);
+  color: #fff;
+}
+
+/* NAVBAR BACKGROUND */
+.navbar {
+  background: linear-gradient(90deg, #0a0f2c, #c1121f, #ff7e00, #1b0033);
+  box-shadow: 2px 5px 20px 10px rgba(33, 16, 119, 0.4);
+}
+
+.navbar .nav-link:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* BRAND */
+.navbar-brand {
+  font-weight: 700;
+  font-size: 22px;
+  color: #fff !important;
+  letter-spacing: 1px;
+  transition: 0.3s;
+  /* transform: translateX(50%); */
+
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.6);
+}
+
+.main-nav-links {
+  transform: translateX(30%);
+  width: 30%;
+  justify-content: space-around;
+}
+
+.menu-button {
+  transform: translateX(-100%);
+
+}
+
+/* NAV LINKS */
+.navbar .nav-link {
+  color: rgba(255, 255, 255, 0.85) !important;
+  margin: 0 6px;
+  padding: 6px 12px;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  position: relative;
+  font-size: 18px;
+
+}
+
+/* HOVER EFFECT (FUN GLOW) */
+.navbar .nav-link:hover {
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.15);
+  transform: translateY(-2px);
+}
+
+/* ACTIVE LINK */
+.navbar .nav-link.active {
+  background: #ffc107;
+  color: #000 !important;
+  font-weight: 600;
+}
+
+/* WHEEL INDICATOR 🛞 */
+.navbar .nav-link.active::after {
+  content: "🛞";
+  position: absolute;
+  bottom: -14px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 14px;
+}
+
+
+/* SEARCH BAR */
+.search-form {
+
+  width: 30%;
+  transform: translateX(-50%);
+}
+
+.form-control {
+  border-radius: 20px;
+  border: 1px none;
+
+}
+
+.search-button {
+  border-radius: 20px;
+  border-color: #fff;
+  color: #fff;
+}
+
+.search-button:hover {
+  background: #ffc107;
+  color: #000;
+  border-color: #ffc107;
+}
+
+.hover-bg:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transition: 0.3s;
+}
+
+/* FULLSCREEN */
+.hero-carousel {
+  position: relative;
+  height: 91.8vh;
+  overflow: hidden;
+
+  /* BACKGROUND */
+  .carousel-bg,
+  .carousel-bg .carousel-inner,
+  .carousel-bg .carousel-item {
+    height: 100%;
+  }
+
+  .carousel-bg-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  /* OVERLAY */
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: 1;
+  }
+
+  /* FIXED CONTENT */
+  .hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 2;
+    width: 100%;
+  }
+
+  /* FEATURE BOX */
+  .feature-box {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    backdrop-filter: blur(6px);
+    transition: 0.3s;
+  }
+
+  .feature-box:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-5px);
+  }
+
+}
+
+
+/* add carousel form */
+.add-carousel {
+  transform: translateX(100%);
+}
+
+.product-card {
+  cursor: pointer;
+}
+
+/* Square image */
+.product-img {
+  width: 100%;
+  aspect-ratio: 2 / 1;
+  overflow: hidden;
+}
+
+.product-img img {
+  width: 100%;
+  height: 80%;
+  object-fit: contain;
+}
+
+/* Hide buttons initially */
+.admin-btn {
+  opacity: 0;
+  transition: 0.3s;
+  z-index: 2;
+}
+
+/* Show when active */
+.product-card.active .admin-btn {
+  opacity: 1;
+}
+
+.edit-product-form-section {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0a0f2c, #1c1c1c);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .edit-product-form-card {
+    height: 100%;
+    max-width: 600px;
+    width: 100%;
+    border-radius: 16px;
+  }
+/* TEXT */
+.hero-content h1 {
+  font-size: 42px;
+  font-weight: 600;
+}
+
+/* Contact Card */
+.contact-card {
+  border: none;
+  border-radius: 15px;
+  background: linear-gradient(90deg, #ff752b, #f0c60b);
+
+  .btn {
+    border-radius: 10px;
+    transition: 0.3s;
+    background-color: #000;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  .form-control {
+    border-radius: 10px;
+  }
+
+
+}
+
+/* contact information */
+.contact-info {
+  background: rgba(247, 185, 50, 0.573);
+  backdrop-filter: blur(10px);
+  border-radius: 5px;
+}
+
+.follow-us {
+  background-color: #f1f3f5;
+  color: #f1f3f5;
+}
+
+
+.add-product-section{
+  background: linear-gradient(90deg,#181413, #0a0f2c, #221c1a);
+}
+
+/* THUMBNAILS */
+.product-thumbs {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  /* THUMB WRAPPER */
+  .thumb-wrapper {
+    position: relative;
+  }
+
+  .product-thumb {
+    width: 100%;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    opacity: 0.7;
+    transition: 0.3s;
+  }
+
+  .product-thumb:hover {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+
+  .active-thumb {
+    border: 2px solid #0d6efd;
+    opacity: 1;
+  }
+
+  /* ACTION BUTTONS */
+  .thumb-actions {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    display: flex;
+    gap: 4px;
+    opacity: 0;
+    transition: 0.3s;
+  }
+
+  .thumb-wrapper:hover .thumb-actions {
+    opacity: 1;
+  }
+
+  /* BUTTON STYLE */
+  .thumb-actions .btn {
+    padding: 3px 6px;
+    border-radius: 6px;
+    font-size: 12px;
+  }
+
+  /* MAIN IMAGE */
+  .product-main__img {
+    width: 100%;
+    height: 520px;
+    object-fit: cover;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: 0.4s;
+  }
+
+  .product-main__img:hover {
+    transform: scale(1.03);
+
+  }
+
+  /* MODAL IMAGE */
+  .product-modal__img {
+    max-width: 95%;
+    max-height: 90vh;
+    object-fit: contain;
+  }
+
+  .card {
+    border-radius: 15px;
+  }
+
+  .btn {
+    border-radius: 10px;
+    transition: 0.3s;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+
+  img {
+    border-radius: 15px;
+  }
+}
+
+/* Basic form field */
+.basic-form-field {
+
+  /* border: 1px solid; */
+  .form-control {
+    width: 100%;
+    box-shadow: 2px 2px 2px 2px grey;
+  }
+
+  input {
+    width: 100%;
+  }
+}
+
+.add-product-card {
+  background-color: rgb(236, 231, 222);
+}
