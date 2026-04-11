@@ -4,15 +4,53 @@
 Add Product
 {% endblock %}
 
-
 {% block content %}
-<h2>Add Product</h2>
+<div class="container d-flex justify-content-center align-items-center" style="min-height: 90vh;">
 
-<form method="post" enctype="multipart/form-data">
-  {% csrf_token %}
+  <div class="add-product-card shadow-lg border-0 rounded-4 p-4" style="width: 100%; max-width: 650px;">
 
-  {{ form.as_p }}
+    <!-- Header -->
+    <div class="text-center mb-4">
+      <h3 class="fw-bold">Add Product</h3>
+      <p class="text-muted mb-0">Fill in product details to add a new item</p>
+    </div>
 
-  <button type="submit">Add Product</button>
-</form>
+    <!-- Form -->
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      {% for field in form %}
+        <div class="mb-3">
+          <label class="form-label fw-semibold">
+            {{ field.label }}
+          </label>
+
+          {{ field }}
+
+          {% if field.help_text %}
+            <div class="form-text">{{ field.help_text }}</div>
+          {% endif %}
+
+          {% for error in field.errors %}
+            <div class="text-danger small">{{ error }}</div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+
+      <!-- Buttons -->
+      <div class="d-flex gap-2 mt-4">
+        <a href="javascript:history.back()" class="btn btn-light w-50 rounded-pill">
+          Cancel
+        </a>
+
+        <button type="submit" class="btn btn-primary w-50 rounded-pill fw-semibold">
+          Add Product
+        </button>
+      </div>
+
+    </form>
+
+  </div>
+
+</div>
 {% endblock %}
