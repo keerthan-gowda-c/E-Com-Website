@@ -14,7 +14,7 @@
                onclick="changeImage('{{ img.image.url }}', this)">
 
           <!-- ACTION BUTTONS -->
-           
+           {% if user.is_staff %}
           <div class="thumb-actions">
 
             <a href="{% url 'edit_product_image' img.pk %}"
@@ -29,7 +29,7 @@
             </a>
 
           </div>
-          
+            {% endif %}
 
         </div>
         {% endfor %}

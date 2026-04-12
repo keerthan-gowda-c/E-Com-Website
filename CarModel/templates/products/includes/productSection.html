@@ -1,6 +1,6 @@
 
 
-<div class="container">
+<div class="container" id='product-section' data-add-to-cart-url="{% url 'add_to_cart' %}" data-csrf-token = '{{csrf_token}}'>
     <div class="row g-4">
         {% for product in products %}
         

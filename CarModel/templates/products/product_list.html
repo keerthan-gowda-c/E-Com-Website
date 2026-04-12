@@ -11,10 +11,12 @@ Products
 
 <h2>Products</h2>
 <hr>
+{% if user.is_staff %}
 <a href="{% url 'add_product' %}" class="btn add-button btn-outline-light">
     <span class="material-symbols-outlined">
         box_add
     </span></a>
+    {% endif %}
 
 
 {% include 'products/includes/productSection.html' %}
