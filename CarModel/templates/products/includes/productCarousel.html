@@ -1,92 +1,64 @@
-<div class="container">
-  <div class="row g-3 align-items-start">
+<div class="container product-carousel-in-detail">
+  <div class="row justify-content-center align-items-center">
 
-    <!-- LEFT: THUMBNAILS -->
-    <div class="col-3 col-md-2">
-      <div class="product-thumbs flex-md-column d-flex">
+    <!-- LEFT: ADMIN ACTIONS -->
+    {% if user.is_staff %}
+    <div class="col-auto">
+      <div class="d-flex flex-column gap-3">
 
-        {% for img in product.images.all %}
-        <div class="thumb-wrapper">
+        <a href="{% url 'edit_product_image' product.images.first.pk %}"
+           class="btn btn-light shadow-sm rounded-circle p-2">
+          <i class="bi bi-pencil"></i>
+        </a>
 
-          <!-- IMAGE -->
-          <img src="{{ img.image.url }}"
-               class="product-thumb {% if forloop.first %}active-thumb{% endif %}"
-               onclick="changeImage('{{ img.image.url }}', this)">
+        <a href="{% url 'del_product_image' product.images.first.pk %}"
+           class="btn btn-danger shadow-sm rounded-circle p-2">
+          <i class="bi bi-trash"></i>
+        </a>
 
-          <!-- ACTION BUTTONS -->
-           {% if user.is_staff %}
-          <div class="thumb-actions">
+      </div>
+    </div>
+    {% endif %}
 
-            <a href="{% url 'edit_product_image' img.pk %}"
-               class="btn btn-light btn-sm shadow-sm">
-              <i class="bi bi-pencil"></i>
-            </a>
+    <!-- CAROUSEL -->
+    <div class="col-lg-6 text-center">
 
-            <a href="{% url 'del_product_image' img.pk %}"
-               class="btn btn-danger btn-sm shadow-sm"
-               >
-              <i class="bi bi-trash"></i>
-            </a>
+      <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
+
+        <!-- IMAGES -->
+        <div class="carousel-inner">
+
+          {% for img in product.images.all %}
+          <div class="carousel-item {% if forloop.first %}active{% endif %}">
+            
+            <div class="main-image-box">
+              <img src="{{ img.image.url }}"
+                   class="product-main__img d-block w-100"
+                   data-bs-toggle="modal"
+                   data-bs-target="#imageModal">
+            </div>
 
           </div>
-            {% endif %}
+          {% endfor %}
 
         </div>
-        {% endfor %}
+
+        <!-- DOT INDICATORS -->
+        <div class="carousel-indicators position-static mt-3">
+
+          {% for img in product.images.all %}
+          <button type="button"
+                  data-bs-target="#productCarousel"
+                  data-bs-slide-to="{{ forloop.counter0 }}"
+                  class="{% if forloop.first %}active{% endif %} carousel-dot">
+          </button>
+          {% endfor %}
+
+        </div>
 
       </div>
-    </div>
 
-    <!-- RIGHT: MAIN IMAGE -->
-    <div class="col-9 col-md-10">
-      <div class="product-main">
-        <img id="mainImage"
-             src="{{ product.images.first.image.url }}"
-             class="product-main__img img-fluid "
-             data-bs-toggle="modal"
-             data-bs-target="#imageModal">
-      </div>
     </div>
 
   </div>
 </div>
-
-
-<!-- FULLSCREEN MODAL -->
-<div class="modal fade" id="imageModal" tabindex="-1">
-  <div class="modal-dialog modal-fullscreen">
-    <div class="modal-content bg-dark">
-
-      <div class="modal-header border-0">
-        <button type="button" class="btn-close btn-close-white"
-                data-bs-dismiss="modal"></button>
-      </div>
-
-      <div class="modal-body d-flex justify-content-center align-items-center">
-        <img id="modalImage" class="product-modal__img">
-      </div>
-
-    </div>
-  </div>
-</div>
-
-{% block extra_js %}
-<script>
-function changeImage(src, el) {
-    const mainImage = document.getElementById('mainImage');
-    const modalImage = document.getElementById('modalImage');
-    const thumbs = document.querySelectorAll('.product-thumb');
-
-    mainImage.src = src;
-    modalImage.src = src;
-
-    thumbs.forEach(t => t.classList.remove('active-thumb'));
-    el.classList.add('active-thumb');
-}
-
-// Sync modal image
-document.getElementById('mainImage').addEventListener('click', function () {
-    document.getElementById('modalImage').src = this.src;
-});
-</script>
-{% endblock %}

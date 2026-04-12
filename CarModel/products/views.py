@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 
 # Create your views here.
 from .models import Product
@@ -64,6 +64,26 @@ class DeleteProduct(DeleteView):
 
 
 from .models import ProductImage
+
+
+
+class AddProductImageView(CreateView):
+    model = ProductImage
+    form_class = forms.ProductImageForm
+    success_url = reverse_lazy('product_details')
+    
+    template_name = 'products/add_product_image.html'
+
+    def dispatch(self, request, *args, **kwargs):
+        self.product = get_object_or_404(Product, pk=self.kwargs['pk'])
+        return super().dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.product = self.product
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return self.product.get_absolute_url()  # OR redirect manually
 
 class UpdateProductImage(UpdateView):
     model = ProductImage

@@ -38,29 +38,33 @@
           </a>
         </li>
 
+         <!-- Product Duplicate -->
+        <li class="nav-item">
+          <a class="nav-link {% if request.path == '/products/' %}active{% endif %}" href="{% url 'product_list' %}">
+            Product
+          </a>
+        </li>
+
         <!-- Category -->
+        {% if user.is_staff %}
         <li class="nav-item">
           <a class="nav-link {% if request.path == '/Category/' %}active{% endif %}" href="{% url 'category_list' %}">
             Category
           </a>
         </li>
+        {% endif %}
 
-        <!-- Product Duplicate -->
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/Product/' %}active{% endif %}" href="{% url 'product_list' %}">
-            Product
-          </a>
-        </li>
+       
 
 
         <!-- My Cart  -->
-
+        {% if user.is_authenticated %}
         <li class="nav-item">
           <a class="nav-link {% if request.path == '/cart/' %}active{% endif %}" href="{% url 'cart_page' %}"><i
               class="bi bi-cart3"></i>
           </a>
         </li>
-
+        {% endif %}
 
       </ul>
 
@@ -72,8 +76,7 @@
         </button>
       </form>
 
-
-
+      {% if user.is_staff %}
       <ul class="navbar-nav menu-button">
         <!-- Manage (Offcanvas Trigger) -->
         <li class="nav-item">
@@ -84,46 +87,66 @@
         </li>
       </ul>
 
+      {% endif %}
+
+      <div class="dropdown account-dropdown px-5">
+        <button class="btn dropdown-toggle account-btn d-flex align-items-center gap-2" type="button"
+          data-bs-toggle="dropdown">
+
+          <i class="bi bi-person-circle"></i>
+
+          {% if user.is_authenticated %}
+          {{ user.username|capfirst }}
+          {% else %}
+          Accounts
+          {% endif %}
+        </button>
+
+        <ul class="dropdown-menu dropdown-menu-end account-menu">
+
+          {% if user.is_authenticated %}
+          <li class="px-3 py-2 text-secondary small">
+            Signed in as <strong>{{ user.username }}</strong>
+          </li>
+          <li>
+            <hr class="dropdown-divider">
+          </li>
+
+          <li>
+            <form action="{% url 'logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" class="dropdown-item logout-btn">
+                Logout
+              </button>
+            </form>
+          </li>
+
+          {% else %}
+          <li>
+            <a class="dropdown-item" href="{% url 'signin' %}">
+              Login
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" href="{% url 'signup' %}">
+              Register
+            </a>
+          </li>
+          {% endif %}
+
+        </ul>
+      </div>
+
+
+
+
+
     </div>
   </div>
 </nav>
 
 <!-- Category Navbar -->
-<nav class="navbar navbar-expand-lg bg-body-tertiary">
-  <div class="container-fluid ">
 
-    <div class=" collapse navbar-collapse" id="navbarSupportedContent">
-
-      <ul class="navbar-nav category-navbar main-nav-links me-auto mb-2 mb-lg-0">
-        <!-- Category list -->
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'category_list' %}">
-            Categories
-          </a>
-        </li>
-
-        <!-- All -->
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'product_list' %}">
-            All
-          </a>
-        </li>
-
-        <!-- Categories names -->
-        {% for category in categories %}
-        <li class="nav-item">
-          <a class="nav-link {% if request.path == '/' %}active{% endif %}"
-            href="{% url 'category_products' category.pk %}">
-            {{ category.title }}
-          </a>
-        </li>
-
-        {% endfor %}
-        <!-- Category names ends here -->
-
-    </div>
-  </div>
-</nav>
 
 <!-- Category Navbar ends here -->
 
@@ -132,7 +155,7 @@
   aria-labelledby="offcanvasRightLabel" style="background: linear-gradient(135deg, #0a0f2c, #1c1c1c);">
 
   <!-- Manage Header -->
-  {% if user.is_staff %}
+
   <div class="offcanvas-header border-bottom border-secondary">
     <h5 class="offcanvas-title fw-bold" id="manageOffcanvasLabel">
       Manage
@@ -157,52 +180,7 @@
       </li>
     </ul>
   </div>
-  {% endif %}
 
-  <div class="offcanvas-header border-bottom border-secondary">
-    <h5 class="offcanvas-title fw-bold" id="manageOffcanvasLabel">
-      {% if user.is_authenticated %}
-      {{user.username.capitalize}}
-      {% else %}
 
-      Accounts
 
-      {% endif %}
-    </h5>
-    <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-  </div>
-
-  <!-- Body -->
-  <div class="offcanvas-body">
-    <ul class="list-unstyled">
-
-      {% if user.is_authenticated %}
-      <li><a class="dropdown-item" href="{% url 'cart_page' %}">My CART</a></li>
-      <li>
-        <hr class="dropdown-divider">
-        <form action="{% url 'logout' %}" method="post">
-          {% csrf_token %}
-           <li class="mb-3">
-        <a href="" class="text-white text-decoration-none d-block p-2 rounded hover-bg">
-          Logout
-        </a>
-      </li>
-        </form>
-      </li>
-
-      {% else %}
-     <li class="mb-3">
-        <a href="{% url 'signin' %}" class="text-white text-decoration-none d-block p-2 rounded hover-bg">
-          Login
-        </a>
-      </li>
-      <li class="mb-3">
-        <a href="{% url 'signup' %}" class="text-white text-decoration-none d-block p-2 rounded hover-bg">
-          Register
-        </a>
-      </li>
-      {% endif %}
-
-    </ul>
-  </div>
 </div>

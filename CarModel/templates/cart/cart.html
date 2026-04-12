@@ -49,23 +49,23 @@
                             <div class="col-md-3">
                                 <div class="d-flex align-items-center justify-content-center">
 
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="item_id" value="{{ item.id }}">
-                                        <input type="hidden" name="action" value="decrease">
-                                        <button class="btn btn-light border rounded-circle px-2">−</button>
-                                    </form>
+                                  <form method="post" action="{% url 'update_cart' %}">
+    {% csrf_token %}
+    <input type="hidden" name="item_id" value="{{ item.id }}">
+    <input type="hidden" name="action" value="decrease">
+    <button class="btn btn-light border rounded-circle px-2">−</button>
+</form>
 
                                     <span class="fw-bold px-2">
                                         {{ item.quantity }}
                                     </span>
 
-                                    <form method="post">
-                                        {% csrf_token %}
-                                        <input type="hidden" name="item_id" value="{{ item.id }}">
-                                        <input type="hidden" name="action" value="increase">
-                                        <button class="btn btn-light border rounded-circle px-2">+</button>
-                                    </form>
+                                    <form method="post" action="{% url 'update_cart' %}">
+    {% csrf_token %}
+    <input type="hidden" name="item_id" value="{{ item.id }}">
+    <input type="hidden" name="action" value="increase">
+    <button class="btn btn-light border rounded-circle px-2">+</button>
+</form>
 
                                 </div>
                             </div>
@@ -77,13 +77,15 @@
 
                             <!-- REMOVE -->
                             <div class="col-md-1 text-end">
-                                <form method="post">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="item_id" value="{{ item.id }}">
-                                    <input type="hidden" name="action" value="remove">
-                                    
-                                    <a href="" class="btn btn-sm btn-outline-danger rounded-circle">✕</a>
-                                </form>
+                               <form method="post" action="{% url 'update_cart' %}">
+    {% csrf_token %}
+    <input type="hidden" name="item_id" value="{{ item.id }}">
+    <input type="hidden" name="action" value="remove">
+    
+    <button type="submit" class="btn btn-sm btn-outline-danger rounded-circle">
+        ✕
+    </button>
+</form>
                             </div>
 
                         </div>
@@ -101,7 +103,7 @@
 
                     <div class="d-flex justify-content-between mb-2">
                         <span>Subtotal</span>
-                        <span>₹{{ total }}</span>
+                        <span>₹{{ total_price }}</span>
                     </div>
 
                     <div class="d-flex justify-content-between mb-3">
@@ -113,14 +115,14 @@
 
                     <div class="d-flex justify-content-between fw-bold mb-3">
                         <span>Total</span>
-                        <span>₹{{ total }}</span>
+                        <span>₹{{ total_price }}</span>
                     </div>
 
-                    <a href="#" class="btn btn-dark w-100 py-2 rounded-3">
+                    <a href="{% url 'create_order' %}" class="btn btn-dark w-100 py-2 rounded-3">
                         Proceed to Checkout
                     </a>
 
-                    <a href="/" class="btn btn-link text-decoration-none mt-2 w-100">
+                    <a href="{% url 'product_list' %}" class="btn btn-link text-decoration-none mt-2 w-100">
                         Continue Shopping
                     </a>
 

@@ -106,9 +106,120 @@ body {
 
 /* Navbar Styling Ends Here */
 
+/* Accounts styling */
+ 
+/* ===== Account Button ===== */
+.account-btn {
+  background: linear-gradient(135deg, #111, #2c2c2c);
+  color: #fff;
+  border: 1px solid #444;
+  padding: 8px 18px;
+  border-radius: 30px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+/* Glow hover like car tail lights */
+.account-btn:hover {
+  background: linear-gradient(135deg, #000, #3a3a3a);
+  box-shadow: 0 0 12px rgba(255, 0, 0, 0.7);
+  color: #fff;
+}
+
+/* Icon styling */
+.account-btn i {
+  font-size: 1.1rem;
+}
+
+/* ===== Dropdown Menu ===== */
+.account-menu {
+  background: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 14px;
+  padding: 10px;
+  min-width: 200px;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  animation: fadeIn 0.2s ease-in-out;
+}
+
+/* ===== Dropdown Items ===== */
+.account-menu .dropdown-item {
+  color: #ddd;
+  padding: 10px 15px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+/* Premium hover (red accent like sports cars) */
+.account-menu .dropdown-item:hover {
+  background: linear-gradient(135deg, #ff0000, #990000);
+  color: #fff;
+  transform: translateX(3px);
+}
+
+/* ===== Logout Button Reset ===== */
+.logout-btn {
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  color: #ddd;
+  padding: 10px 15px;
+  border-radius: 10px;
+}
+
+/* Logout hover */
+.logout-btn:hover {
+  background: linear-gradient(135deg, #ff0000, #990000);
+  color: #fff;
+}
+
+/* Divider tweak */
+.dropdown-divider {
+  border-color: #333;
+}
+
+/* ===== Animation ===== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ends here */
+
 
 /* Category Navbar */
+.category-scroll::-webkit-scrollbar {
+    height: 4px;
+}
 
+.category-scroll::-webkit-scrollbar-thumb {
+    /* background: #ccc; */
+    border-radius: 10px;
+}
+
+.navbar .nav-link {
+    color: #555;
+    transition: all 0.3s ease;
+}
+
+.navbar .nav-link:hover {
+    color: #000;
+    transform: translateY(-1px);
+}
+
+.navbar .nav-link.active {
+    font-weight: 600;
+}
+/* Category navbar end here */
 
 /* Home Page Carousel Styling Starts here */
 /* FULLSCREEN */
@@ -269,98 +380,33 @@ body {
   background: linear-gradient(90deg,#181413, #0a0f2c, #221c1a);
 }
 
-/* THUMBNAILS */
-.product-thumbs {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+/* Product Details styling */
 
-  /* THUMB WRAPPER */
-  .thumb-wrapper {
-    position: relative;
-  }
-
-  .product-thumb {
+/* MAIN IMAGE SQUARE */
+.main-image-box {
     width: 100%;
-    height: 80px;
-    object-fit: cover;
-    border-radius: 10px;
-    cursor: pointer;
-    opacity: 0.7;
-    transition: 0.3s;
-  }
-
-  .product-thumb:hover {
-    opacity: 1;
-    transform: scale(1.05);
-  }
-
-  .active-thumb {
-    border: 2px solid #0d6efd;
-    opacity: 1;
-  }
-
-  /* ACTION BUTTONS */
-  .thumb-actions {
-    position: absolute;
-    top: 5px;
-    right: 5px;
+    max-width: 450px;
+    aspect-ratio: 1 / 1;
+    margin: auto;
+    background: #f8f9fa;
+    border-radius: 14px;
+    overflow: hidden;
     display: flex;
-    gap: 4px;
-    opacity: 0;
-    transition: 0.3s;
-  }
-
-  .thumb-wrapper:hover .thumb-actions {
-    opacity: 1;
-  }
-
-  /* BUTTON STYLE */
-  .thumb-actions .btn {
-    padding: 3px 6px;
-    border-radius: 6px;
-    font-size: 12px;
-  }
-
-  /* MAIN IMAGE */
-  .product-main__img {
-    width: 100%;
-    height: 520px;
-    object-fit: cover;
-    border-radius: 16px;
-    cursor: pointer;
-    transition: 0.4s;
-  }
-
-  .product-main__img:hover {
-    transform: scale(1.03);
-
-  }
-
-  /* MODAL IMAGE */
-  .product-modal__img {
-    max-width: 95%;
-    max-height: 90vh;
-    object-fit: contain;
-  }
-
-  .card {
-    border-radius: 15px;
-  }
-
-  .btn {
-    border-radius: 10px;
-    transition: 0.3s;
-  }
-
-  .btn:hover {
-    transform: translateY(-2px);
-  }
-
-  img {
-    border-radius: 15px;
-  }
+    align-items: center;
+    justify-content: center;
 }
+
+.product-main__img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+
+/* Ends here */
+
+
+
 
 /* Basic form field */
 .basic-form-field {
@@ -380,3 +426,33 @@ body {
   background-color: rgb(236, 231, 222);
   color: #000;
 }
+
+
+/* add product images */
+.card {
+    transition: all 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+}
+
+input, textarea, select {
+    border-radius: 10px !important;
+    padding: 10px;
+    border: 1px solid #ddd;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #000;
+    box-shadow: none;
+}
+
+button.btn-dark {
+    transition: all 0.3s ease;
+}
+
+button.btn-dark:hover {
+    background-color: #111;
+}
+/* Ends here */

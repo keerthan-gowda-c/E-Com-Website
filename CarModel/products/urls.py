@@ -10,6 +10,7 @@ urlpatterns = [
     path('edit/<int:pk>', views.UpdateProduct.as_view(), name = 'edit_product'),
     path('del/<int:pk>', views.DeleteProduct.as_view(), name = 'del_product'),
     
+    path('product/<int:pk>/add-image/', views.AddProductImageView.as_view(), name='add_product_image'),
     path('image/<int:pk>/edit/', views.UpdateProductImage.as_view(), name = 'edit_product_image'),
     path('image/<int:pk>/del/', views.DeleteProductImage.as_view(), name = 'del_product_image'),
 

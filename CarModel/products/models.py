@@ -32,3 +32,7 @@ class ProductImage(models.Model):
 
     def __str__(self):
         return f'{self.caption} image of > Product {self.product.title}'
+    
+def get_absolute_url(self):
+    from django.urls import reverse
+    return reverse('product_detail', kwargs={'pk': self.pk})

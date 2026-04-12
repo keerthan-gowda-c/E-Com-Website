@@ -1,4 +1,4 @@
-<div class="product-card card border-0 position-relative overflow-hidden shadow-sm" title="Click on the cards to edit" data-product-id="{{product.id}}">
+<div class="product-card card border-0 position-relative overflow-hidden shadow-sm" title="{% if user.is_staff %}Click on the cards to edit {% endif %}" data-product-id="{{product.id}}">
 
   <!-- Admin buttons -->
  {% if user.is_staff %}

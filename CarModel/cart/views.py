@@ -44,10 +44,43 @@ class AddToCartView(View):
         item, created = CartItem.objects.get_or_create(user = request.user,
                                                       product = this_product)
         
-        item.quantity += 1
-        item.save()
+        if not created:
+            item.quantity += 1
+            item.save()
         return JsonResponse({
             'message' : f'{this_product.title} added to Cart',
             'quantity' : item.quantity
         })
     
+
+
+from django.contrib import messages
+
+class UpdateCartView(View):
+    def post(self, request, *args, **kwargs):
+        if not request.user.is_authenticated:
+            return redirect(reverse_lazy('signin'))
+
+        item_id = request.POST.get('item_id')
+        action = request.POST.get('action')
+
+        try:
+            item = CartItem.objects.get(id=item_id, user=request.user)
+        except CartItem.DoesNotExist:
+            return redirect('cart')
+
+        if action == "increase":
+            item.quantity += 1
+            item.save()
+
+        elif action == "decrease":
+            if item.quantity > 1:
+                item.quantity -= 1
+                item.save()
+            else:
+                item.delete()  # remove if quantity goes to 0
+
+        elif action == "remove":
+            item.delete()
+
+        return redirect('cart_page')  # reload cart page
