@@ -1,28 +1,26 @@
-
 body {
-  background: linear-gradient(90deg,#181413, #0a0f2c, #221c1a);
+  background: linear-gradient(90deg, #181413, #0a0f2c, #221c1a);
   color: #fff;
 }
+
+
+
 /* Navbar Styling Starts from here  */
-/* NAVBAR BACKGROUND */
+
 #main-navbar {
   background: linear-gradient(90deg, #0a0f2c, #c1121f, #ff7e00, #1b0033);
-  /* box-shadow: 2px 5px 20px 10px rgba(33, 16, 119, 0.4); */
 }
 
 .navbar .nav-link:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* BRAND */
 .navbar-brand {
   font-weight: 700;
   font-size: 22px;
   color: #fff !important;
   letter-spacing: 1px;
   transition: 0.3s;
-  /* transform: translateX(50%); */
-
 }
 
 .navbar-brand:hover {
@@ -31,12 +29,6 @@ body {
 }
 
 
-.menu-button {
-  transform: translateX(-100%);
-
-}
-
-/* NAV LINKS */
 .navbar .nav-link {
   color: rgba(255, 255, 255, 0.85) !important;
   margin: 0 6px;
@@ -48,21 +40,18 @@ body {
 
 }
 
-/* HOVER EFFECT (FUN GLOW) */
 .navbar .nav-link:hover {
   color: #fff !important;
   background: rgba(255, 255, 255, 0.15);
   transform: translateY(-2px);
 }
 
-/* ACTIVE LINK */
 .navbar .nav-link.active {
   background: #ffc107;
   color: #000 !important;
   font-weight: 600;
 }
 
-/* WHEEL INDICATOR 🛞 */
 .navbar .nav-link.active::after {
   content: "🛞";
   position: absolute;
@@ -72,36 +61,39 @@ body {
   font-size: 14px;
 }
 
-
-/* SEARCH BAR */
 .search-form {
+  background-color: white;
+  width: 15%;
+  border-radius: 50px;
 
-  width: 30%;
-  /* transform: translateX(-30%); */
 }
 
-.navbar-toggler{
-  
+/* Visible when screen size is small */
+.navbar-toggler {
   background-color: rgb(248, 235, 215);
 }
 
 .form-control {
-  border-radius: 20px;
+  border-radius: 50px;
   border: 1px none;
-
 }
 
+
 .search-button {
-  border-radius: 20px;
-  border-color: #fff;
-  color: #fff;
+  border-radius: 50%;
+  border-color: #b7b7b7;
+  color: #120707;
+  background: #b7b7b7;
 }
 
 .search-button:hover {
-  background: #ffc107;
+  background: #ffffff;
   color: #000;
-  border-color: #ffc107;
+  border-color: #b7b7b7;
+  border-radius: 50%;
 }
+
+
 
 .hover-bg:hover {
   background-color: rgba(255, 255, 255, 0.1);
@@ -110,21 +102,19 @@ body {
 
 
 /* Second Navbar Styling */
-#second-navbar{
-  /* border: 3px solid #471e8f; */
+#second-navbar {
   box-shadow: 1px -2px 7px 1px orange;
-background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
+  background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
 }
-#second-navbar.active{
-  text-decoration: underline;
 
+#second-navbar.active {
+  text-decoration: underline;
 }
 
 /* Navbar Styling Ends Here */
 
+
 /* Accounts styling */
- 
-/* ===== Account Button ===== */
 .account-btn {
   background: linear-gradient(135deg, #111, #2c2c2c);
   color: #fff;
@@ -147,19 +137,17 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
 .account-btn i {
   font-size: 1.1rem;
 }
-
-/* ===== Dropdown Menu ===== */
+/* Account Dropdown */
 .account-menu {
   background: #1a1a1a;
   border: 1px solid #333;
   border-radius: 14px;
   padding: 10px;
   min-width: 200px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.7);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.7);
   animation: fadeIn 0.2s ease-in-out;
 }
-
-/* ===== Dropdown Items ===== */
+/* Dropdown items */
 .account-menu .dropdown-item {
   color: #ddd;
   padding: 10px 15px;
@@ -167,15 +155,13 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
   transition: all 0.3s ease;
   font-weight: 500;
 }
-
-/* Premium hover (red accent like sports cars) */
+/* Hover colors */
 .account-menu .dropdown-item:hover {
   background: linear-gradient(135deg, #ff0000, #990000);
   color: #fff;
   transform: translateX(3px);
 }
-
-/* ===== Logout Button Reset ===== */
+/* Logout  */
 .logout-btn {
   background: none;
   border: none;
@@ -192,21 +178,8 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
   color: #fff;
 }
 
-/* Divider tweak */
 .dropdown-divider {
   border-color: #333;
-}
-
-/* ===== Animation ===== */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(8px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
 }
 
 /* Ends here */
@@ -214,37 +187,35 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
 
 /* Category Navbar */
 .category-scroll::-webkit-scrollbar {
-    height: 4px;
+  height: 4px;
 }
 
 .category-scroll::-webkit-scrollbar-thumb {
-    /* background: #ccc; */
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 .navbar .nav-link {
-    color: #555;
-    transition: all 0.3s ease;
+  color: #555;
+  transition: all 0.3s ease;
 }
 
 .navbar .nav-link:hover {
-    color: #000;
-    transform: translateY(-1px);
+  color: #000;
+  transform: translateY(-1px);
 }
 
 .navbar .nav-link.active {
-    font-weight: 600;
+  font-weight: 600;
 }
 /* Category navbar end here */
 
+
 /* Home Page Carousel Styling Starts here */
-/* FULLSCREEN */
 .hero-carousel {
   position: relative;
   height: 91.8vh;
   overflow: hidden;
 
-  /* BACKGROUND */
   .carousel-bg,
   .carousel-bg .carousel-inner,
   .carousel-bg .carousel-item {
@@ -257,7 +228,7 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
     object-fit: cover;
   }
 
-  /* OVERLAY */
+  /* Overlay */
   .hero-overlay {
     position: absolute;
     inset: 0;
@@ -265,7 +236,7 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
     z-index: 1;
   }
 
-  /* FIXED CONTENT */
+  /* content fixed */
   .carousel-hero-content {
     position: absolute;
     top: 50%;
@@ -275,7 +246,7 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
     width: 100%;
   }
 
-  /* FEATURE BOX */
+  /* Feature Cards on carousel */
   .feature-box {
     background: rgba(255, 255, 255, 0.1);
     border-radius: 12px;
@@ -289,13 +260,13 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
   }
 
 }
-
 /* Home Page Carousel Styling Ends here */
 
-/*  */
 /* add carousel form Styling Starts Here*/
 .add-carousel {
-  transform: translateX(100%);
+  border: 1px solid red;
+  position: absolute;
+  left: 35%;
 }
 
 /* Product Card Stylings Strats here */
@@ -334,33 +305,33 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
 
 /* Edit product Stylings Starts Here */
 .edit-product-form-section {
-    min-height: 100vh;
-    background: linear-gradient(135deg, #0a0f2c, #1c1c1c);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  min-height: 100vh;
+  background: linear-gradient(135deg, #0a0f2c, #1c1c1c);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 
-  .edit-product-form-card {
-    height: 100%;
-    max-width: 600px;
-    width: 100%;
-    border-radius: 16px;
-  }
-
-
-
-/* TEXT */
-.hero-content h1 {
-  font-size: 42px;
-  font-weight: 600;
+.edit-product-form-card {
+  height: 100%;
+  max-width: 600px;
+  width: 100%;
+  border-radius: 16px;
 }
 
 /* Contact Card */
 .contact-card {
   border: none;
   border-radius: 15px;
-  background: linear-gradient(90deg, #ff752b, #f0c60b);
+  background-color: rgb(254, 163, 53);
+  input{
+    box-shadow: -1px -1px 1px 1px #0a0f2c;
+  }
+
+  textarea{
+    box-shadow: -1px -1px 1px 1px #0a0f2c;
+  }
+  /* background: linear-gradient(90deg, #f59866, #ffe262); */
 
   .btn {
     border-radius: 10px;
@@ -381,7 +352,7 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
 
 /* contact information */
 .contact-info {
-  background: rgba(247, 185, 50, 0.573);
+  background: rgba(109, 75, 246, 0.485);
   backdrop-filter: blur(10px);
   border-radius: 5px;
 }
@@ -392,36 +363,32 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
 }
 
 
-.add-product-section{
-  background: linear-gradient(90deg,#181413, #0a0f2c, #221c1a);
+.add-product-section {
+  background: linear-gradient(90deg, #181413, #0a0f2c, #221c1a);
 }
 
 /* Product Details styling */
 
-/* MAIN IMAGE SQUARE */
+/* Main Image */
 .main-image-box {
-    width: 100%;
-    max-width: 450px;
-    aspect-ratio: 1 / 1;
-    margin: auto;
-    background: #f8f9fa;
-    border-radius: 14px;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  width: 100%;
+  max-width: 450px;
+  aspect-ratio: 1 / 1;
+  margin: auto;
+  background: #f8f9fa;
+  border-radius: 14px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .product-main__img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
 }
-
-
 /* Ends here */
-
-
 
 
 /* Basic form field */
@@ -438,38 +405,102 @@ background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
   }
 }
 
+/* Ends here */
+
+/* Add product card */
 .add-product-card {
   background-color: rgb(236, 231, 222);
   color: #000;
 }
-
+/* Ends here */
 
 /* add product images */
 .card {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .product-card:hover {
-    transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
-input, textarea, select {
-    border-radius: 10px !important;
-    padding: 10px;
-    border: 1px solid #ddd;
+input,
+textarea,
+select {
+  border-radius: 10px !important;
+  padding: 10px;
+  border: 1px solid #ddd;
 }
 
-input:focus, textarea:focus, select:focus {
-    border-color: #000;
-    box-shadow: none;
+input:focus,
+textarea:focus,
+select:focus {
+  border-color: #000;
+  box-shadow: none;
 }
 
 button.btn-dark {
-    transition: all 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 button.btn-dark:hover {
-    background-color: #111;
+  background-color: #111;
 }
+
+/* Ends here */
+
+
+/* Address box */
+.address-box {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    cursor: pointer;
+    transition: 0.2s;
+}
+
+.address-box:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
+
+.address-box:has(input:checked) {
+    border: 2px solid #212529;
+}
+/* Ends here */
+
+
+/* Toast  */
+.custom-toast {
+    min-width: 280px;
+    background: #fff;
+    border-radius: 12px;
+    padding: 12px 16px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    border-left: 5px solid #198754;
+    animation: slideIn 0.4s ease;
+}
+
+.toast-icon {
+    width: 32px;
+    height: 32px;
+    background: #198754;
+    color: #fff;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+
+/* Animation */
+@keyframes slideIn {
+    from {
+        transform: translateX(100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
 /* Ends here */
 

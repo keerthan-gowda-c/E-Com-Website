@@ -45,53 +45,107 @@
 </head>
 
 <body>
-    <div class="container my-5">
-        <div class="checkout-card">
-            <h1 class="text-center">Checkout</h1>
-            <p class="text-center">Dear {{ user.username }}, please confirm your order details and proceed with payment.
-            </p>
+   <div class="container my-5">
+    <div class="row g-4">
 
-            <!-- Order Details -->
-            <div class="order-details mb-4">
-                <h4 class="text-center">Order Details</h4>
-                <p><strong>Order ID:</strong> {{ order.id }}</p>
-                <p><strong>Total Amount:</strong> ₹{{ order.total_amount }}</p>
-            </div>
+        <!-- LEFT SIDE -->
+        <div class="col-lg-8">
 
-            <!-- Shipping Address -->
+            <!-- HEADER -->
             <div class="mb-4">
-                <h4>Shipping Address</h4>
-                <p>
-                    {{ order.address.full_name }}<br>
-                    {{ order.address.address_line1 }}, {{ order.address.city }}, {{ order.address.state }} - 
-                    {{ order.address.pincode }}
+                <h3 class="fw-bold">Checkout</h3>
+                <p class="text-muted mb-0">
+                    Hello {{ user.username }}, confirm your details below
                 </p>
-                <a href="{% url 'select_address_for_order' order.id %}" class="btn btn-secondary w-100">Change
-                    Address</a>
             </div>
 
-            <!-- Payment Section -->
-            <h4>Payment</h4>
-            <form id="payment-form" method="post" action="{% url 'payment:payment_success' %}">
-                {% csrf_token %}
-                <script src="https://checkout.razorpay.com/v1/checkout.js" data-key="{{ key_id }}"
-                    data-amount="{{ razorpay_order.amount }}" data-currency="{{ razorpay_order.currency }}"
-                    data-order_id="{{ razorpay_order.id }}" data-buttontext="Pay Now" data-name="My Shopping Site"
-                    data-description="Order Payment" data-theme.color="#F37254">
+            <!-- ADDRESS -->
+            <div class="p-3 border rounded-3 mb-4 bg-white">
+                <div class="d-flex justify-content-between align-items-center mb-2">
+                    <h5 class="mb-0">Delivery Address</h5>
+                    <a href="{% url 'select_address_for_order' order.id %}" 
+                       class="btn btn-sm btn-outline-dark">
+                        Change
+                    </a>
+                </div>
+
+                <div class="text-muted small">
+                    <strong class="text-dark">{{ order.address.full_name }}</strong><br>
+                    {{ order.address.address_line1 }},
+                    {{ order.address.city }},
+                    {{ order.address.state }} - {{ order.address.pincode }}
+                </div>
+            </div>
+
+            <!-- PAYMENT -->
+            <div class="p-3 border rounded-3 bg-white">
+                <h5 class="mb-3">Payment</h5>
+
+                <form id="payment-form" method="post" action="{% url 'payment:payment_success' %}">
+                    {% csrf_token %}
+
+                    <script src="https://checkout.razorpay.com/v1/checkout.js"
+                        data-key="{{ key_id }}"
+                        data-amount="{{ razorpay_order.amount }}"
+                        data-currency="{{ razorpay_order.currency }}"
+                        data-order_id="{{ razorpay_order.id }}"
+                        data-buttontext="Pay ₹{{ order.total_amount }}"
+                        data-name="My Shopping Site"
+                        data-description="Secure Payment"
+                        data-theme.color="#212529">
                     </script>
-                <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order.id }}">
-                <input type="hidden" name="csrfmiddlewaretoken" value="{{ csrf_token }}">
-            </form>
 
-            <!-- Cancel Order Section -->
-            <hr>
-            <form method="post" action="{% url 'cancel_order' order.id %}">
-                {% csrf_token %}
-                <button type="submit" class="btn cancel-btn w-100 mt-3">Cancel Order</button>
-            </form>
+                    <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order.id }}">
+                </form>
+            </div>
+
         </div>
-    </div>
 
+        <!-- RIGHT SIDE (SUMMARY) -->
+        <div class="col-lg-4">
+
+            <div class="p-4 border rounded-3 bg-white shadow-sm position-sticky" style="top: 20px;">
+
+                <h5 class="mb-3">Order Summary</h5>
+
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Order ID</span>
+                    <span>#{{ order.id }}</span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Subtotal</span>
+                    <span>₹{{ order.total_amount }}</span>
+                </div>
+
+                <div class="d-flex justify-content-between mb-2">
+                    <span>Delivery</span>
+                    <span class="text-success">Free</span>
+                </div>
+
+                <hr>
+
+                <div class="d-flex justify-content-between fw-bold">
+                    <span>Total</span>
+                    <span>₹{{ order.total_amount }}</span>
+                </div>
+
+                <!-- CANCEL -->
+                <form method="post" action="{% url 'cancel_order' order.id %}">
+                    {% csrf_token %}
+                    <button type="submit"
+                        class="btn btn-outline-danger w-100 mt-4">
+                        Cancel Order
+                    </button>
+                </form>
+
+            </div>
+
+
+        </div>
+
+    </div>
+</div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 

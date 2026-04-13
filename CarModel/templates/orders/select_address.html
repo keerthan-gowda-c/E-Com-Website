@@ -7,7 +7,7 @@ Select Address
 {% block content %}
 <form method="post">
 
-<div class="container mt-5">
+<div class="container mt-5 w-50">
     <div class="card shadow-sm p-4">
         
         <h4 class="mb-4 text-center fw-bold">Select Delivery Address</h4>
@@ -18,25 +18,26 @@ Select Address
             {% if addresses %}
                 <div class="list-group mb-4">
                     {% for address in addresses %}
-                        <label class="list-group-item d-flex align-items-start gap-3">
-                            
-                            <input class="form-check-input mt-1"
-                                   type="radio"
-                                   name="address"
-                                   value="{{ address.id }}">
+                        <label class="d-flex gap-3 p-3 mb-3 rounded-3 shadow-sm address-box">
 
-                            <div>
-                                <div class="fw-semibold">
-                                    {{ address.full_name }}
-                                </div>
-                                <small class="text-muted">
-                                    {{ address.address_line1 }},
-                                    {{ address.city }},
-                                    {{ address.state }} - {{ address.pincode }}
-                                </small>
-                            </div>
+    <input class="form-check-input mt-1"
+           type="radio"
+           name="address"
+           value="{{ address.id }}">
 
-                        </label>
+    <div>
+        <div class="fw-bold">
+            {{ address.full_name }}
+        </div>
+
+        <div class="text-muted small mt-1">
+            {{ address.address_line1 }},
+            {{ address.city }},
+            {{ address.state }} - {{ address.pincode }}
+        </div>
+    </div>
+
+</label>
                     {% endfor %}
                 </div>
 
