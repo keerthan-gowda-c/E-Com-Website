@@ -54,7 +54,7 @@ class AddToCartView(View):
     
 
 
-from django.contrib import messages
+
 
 class UpdateCartView(View):
     def post(self, request, *args, **kwargs):
@@ -78,9 +78,9 @@ class UpdateCartView(View):
                 item.quantity -= 1
                 item.save()
             else:
-                item.delete()  # remove if quantity goes to 0
+                item.delete() 
 
         elif action == "remove":
             item.delete()
 
-        return redirect('cart_page')  # reload cart page
+        return redirect('cart_page')  

@@ -6,7 +6,7 @@ urlpatterns = [
     path('about/', views.aboutView, name = 'about_page'),
     path('contact/', views.contactView, name = 'contact_page'),
    
-
+    path('search', views.searchView, name = 'search_view'),
 
     path('carousels/', views.CarouselImageList.as_view(), name = 'carousel_page'),
     path('carousels/add/', views.AddCarouselImage.as_view(), name = 'add_carousel'),

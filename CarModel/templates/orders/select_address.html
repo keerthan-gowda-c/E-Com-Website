@@ -5,13 +5,14 @@ Select Address
 {% endblock %}
 
 {% block content %}
+<form method="post">
 
 <div class="container mt-5">
     <div class="card shadow-sm p-4">
         
         <h4 class="mb-4 text-center fw-bold">Select Delivery Address</h4>
 
-        <form method="post">
+        
             {% csrf_token %}
 
             {% if addresses %}
@@ -60,9 +61,9 @@ Select Address
                 </div>
             {% endif %}
 
-        </form>
+        
 
     </div>
 </div>
-
+</form>
 {% endblock %}

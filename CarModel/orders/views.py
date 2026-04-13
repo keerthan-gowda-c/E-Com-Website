@@ -137,3 +137,12 @@ def cancel_order(request, order_id):
         messages.error(request, "This order cannot be cancelled.")
 
     return redirect("home_page") 
+
+from django.shortcuts import redirect, get_object_or_404
+from .models import Address
+
+def delete_address(request, address_id):
+    if request.method == "POST":
+        address = get_object_or_404(Address, id=address_id, user=request.user)
+        address.delete()
+    return redirect(request.META.get('HTTP_REFERER', 'select_address'))

@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect 
 
 # Create your views here.
 
@@ -67,3 +67,21 @@ class DeleteCarouselImage(DeleteView):
     template_name = 'mainapp/carousel/del_carousel.html'
     success_url = reverse_lazy('carousel_page')
     context_object_name = 'carousel_image' 
+
+
+from products.models import Product
+
+def searchView(request):
+    query = request.GET.get('q')
+
+    if not query:
+        return redirect(reverse_lazy('home_page'))
+    
+    products = Product.objects.filter(title__icontains = query)
+
+    context = {
+        'query' : query,
+        'products' : products
+    }
+    template = 'mainapp/search_results.html'
+    return render(request, template, context)

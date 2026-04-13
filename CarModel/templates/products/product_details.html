@@ -16,12 +16,12 @@
     <div class="row g-5 align-items-start">
 
         <!-- LEFT: IMAGE -->
-        <div class="col-lg-6 product-carousel-in-detail">
+        <div class="col-lg-8 product-carousel-in-detail">
             {% include 'products/includes/productCarousel.html' %}
         </div>
 
         <!-- RIGHT: DETAILS -->
-        <div class="col-lg-6">
+        <div class="col-lg-3">
 
             <div class="product-detail__info">
 
@@ -37,19 +37,19 @@
 
                 <!-- Description -->
                 <p class="product-detail__desc">
-                    {{ product.caption }}
+                    {{ product.desc}}
                 </p>
 
                 <!-- Actions -->
                 <div class="product-detail__actions d-flex gap-3 mt-4">
 
-                    <a href="#" class="btn btn-primary product-detail__cart-btn">
+                    <button
+                        class="btn mt-auto add-to-cart product-cart-btn {% if user.is_staff %}disabled btn-secondary{% else %}btn-primary{% endif %}"
+                        data-product-id='{{product.id}}'>
                         Add to Cart
-                    </a>
+                    </button>
 
-                    <a href="#" class="btn btn-outline-warning product-detail__wishlist-btn">
-                        Wishlist
-                    </a>
+                    
 
                 </div>
 
@@ -61,16 +61,15 @@
 
 </section>
 
-
-<section >
+{% if user.is_staff %}
+<section>
     <div class="text-center mt-5">
-    <a href="{% url 'add_product_image' product.pk %}" 
-       class="btn btn-outline-light px-4 py-2 rounded-3">
-        ➕ Add More Images
-    </a>
-</div>
+        <a href="{% url 'add_product_image' product.pk %}" class="btn btn-outline-light px-4 py-2 rounded-3">
+            ➕ Add More Images
+        </a>
+    </div>
 </section>
-  
+{% endif %}
 
 
 {% endblock %}

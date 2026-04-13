@@ -1,4 +1,4 @@
-<div class="container product-carousel-in-detail">
+<div class="container">
   <div class="row justify-content-center align-items-center">
 
     <!-- LEFT: ADMIN ACTIONS -->
@@ -7,12 +7,12 @@
       <div class="d-flex flex-column gap-3">
 
         <a href="{% url 'edit_product_image' product.images.first.pk %}"
-           class="btn btn-light shadow-sm rounded-circle p-2">
+          class="btn btn-light shadow-sm rounded-circle p-2">
           <i class="bi bi-pencil"></i>
         </a>
 
         <a href="{% url 'del_product_image' product.images.first.pk %}"
-           class="btn btn-danger shadow-sm rounded-circle p-2">
+          class="btn btn-danger shadow-sm rounded-circle p-2">
           <i class="bi bi-trash"></i>
         </a>
 
@@ -21,21 +21,23 @@
     {% endif %}
 
     <!-- CAROUSEL -->
-    <div class="col-lg-6 text-center">
+    <div class="col-lg-12  text-center">
 
       <div id="productCarousel" class="carousel slide" data-bs-ride="carousel">
 
         <!-- IMAGES -->
-        <div class="carousel-inner">
+        <div class="carousel-inner ">
 
           {% for img in product.images.all %}
           <div class="carousel-item {% if forloop.first %}active{% endif %}">
-            
+
             <div class="main-image-box">
-              <img src="{{ img.image.url }}"
-                   class="product-main__img d-block w-100"
-                   data-bs-toggle="modal"
-                   data-bs-target="#imageModal">
+              <img src="{{ img.image.url }}" class="product-main__img" data-bs-toggle="modal"
+                data-bs-target="#imageModal">
+            </div>
+
+            <div>
+              {{img.caption}}
             </div>
 
           </div>
@@ -47,10 +49,8 @@
         <div class="carousel-indicators position-static mt-3">
 
           {% for img in product.images.all %}
-          <button type="button"
-                  data-bs-target="#productCarousel"
-                  data-bs-slide-to="{{ forloop.counter0 }}"
-                  class="{% if forloop.first %}active{% endif %} carousel-dot">
+          <button type="button" data-bs-target="#productCarousel" data-bs-slide-to="{{ forloop.counter0 }}"
+            class="{% if forloop.first %}active{% endif %} carousel-dot">
           </button>
           {% endfor %}
 

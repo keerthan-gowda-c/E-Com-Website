@@ -5,9 +5,9 @@ body {
 }
 /* Navbar Styling Starts from here  */
 /* NAVBAR BACKGROUND */
-.navbar {
+#main-navbar {
   background: linear-gradient(90deg, #0a0f2c, #c1121f, #ff7e00, #1b0033);
-  box-shadow: 2px 5px 20px 10px rgba(33, 16, 119, 0.4);
+  /* box-shadow: 2px 5px 20px 10px rgba(33, 16, 119, 0.4); */
 }
 
 .navbar .nav-link:hover {
@@ -77,7 +77,12 @@ body {
 .search-form {
 
   width: 30%;
-  transform: translateX(-50%);
+  /* transform: translateX(-30%); */
+}
+
+.navbar-toggler{
+  
+  background-color: rgb(248, 235, 215);
 }
 
 .form-control {
@@ -103,6 +108,17 @@ body {
   transition: 0.3s;
 }
 
+
+/* Second Navbar Styling */
+#second-navbar{
+  /* border: 3px solid #471e8f; */
+  box-shadow: 1px -2px 7px 1px orange;
+background: linear-gradient(90deg, #fd6225, #5f32a84e, #f9780e);
+}
+#second-navbar.active{
+  text-decoration: underline;
+
+}
 
 /* Navbar Styling Ends Here */
 
@@ -456,3 +472,4 @@ button.btn-dark:hover {
     background-color: #111;
 }
 /* Ends here */
+
