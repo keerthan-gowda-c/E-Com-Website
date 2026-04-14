@@ -76,7 +76,7 @@
 
  {% if user.is_authenticated %}
         <li class="nav-item">
-          <a class="nav-link {% if request.path == '/cart/' %}active{% endif %}" href="{% url 'order_history_2' %}">
+          <a class="nav-link {% if request.path == '/orders/history/v2' %}active{% endif %}" href="{% url 'order_history_2' %}">
              My Orders
           </a>
         </li>
